@@ -68,7 +68,6 @@ Page({
     wx.request({
       url: 'https://www.lingfengzhishang.cn/tp_lsj/public/index.php/api/ad/getad',
       success: function(res){
-        console.log(res.data.data)
         that.setData({
           adImg:res.data.data
         })
