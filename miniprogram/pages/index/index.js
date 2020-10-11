@@ -93,7 +93,7 @@ Page({
   getGoodsCate: function(id){
     var that = this
     wx.request({
-      url: 'https://www.lingfengzhishang.cn/tp_lsj/public/index.php/api/ad/getGoodsCate/id/'+id,
+      url: 'https://www.lingfengzhishang.cn/tp_lsj/public/index.php/api/index/getGoodsCate/id/'+id,
       success: function(res){
         switch (id) {
           case 1:
@@ -123,7 +123,7 @@ Page({
     })
 
     wx.request({
-      url: 'https://www.lingfengzhishang.cn/tp_lsj/public/index.php/api/ad/getList/page/'+ that.data.goods.length,
+      url: 'https://www.lingfengzhishang.cn/tp_lsj/public/index.php/api/index/getList/page/'+ that.data.goods.length,
       success: function(res){ 
         if(res.data.data.length == 0){
           that.setData({

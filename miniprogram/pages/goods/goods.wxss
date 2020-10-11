@@ -1,0 +1,9 @@
+/* pages/goods/goods.wxss */
+.right{
+  float: right;
+  width: 75%;
+}
+.custom-class{
+  float: left !important;
+  width: 25% !important;
+}

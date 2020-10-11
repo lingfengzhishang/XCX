@@ -1,0 +1,24 @@
+<!--pages/goods/goods.wxml-->
+  <view>
+    <van-sidebar active-key="{{ activeKey }}" bind:change="onChange" custom-class="custom-class">
+      <van-sidebar-item 
+      wx:for="{{ goodCateName }}" 
+      title="{{ item.name }}"
+      />
+    </van-sidebar>
+    <view class="right" wx:if="{{ cateListType }}">
+      <van-card wx:for="{{ goods }}"
+      price="{{item.shop_price}}"
+      origin-price="{{item.market_price}}"
+      desc="{{item.goods_remark}}"
+      title="{{item.goods_name}}"
+      thumb="{{item.goods_img }}"
+    />
+    </view>
+    <view wx:else >
+      <van-empty description="暂无数据"/>
+  </view>
+</view>
+
+
+

@@ -2,6 +2,7 @@
   "pages": [
     "pages/index/index",
     "pages/home/home",
+    "pages/goods/goods",
     "pages/classify/classify"
   ],
   "window": {
