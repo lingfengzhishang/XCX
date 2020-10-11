@@ -13,6 +13,8 @@
       desc="{{item.goods_remark}}"
       title="{{item.goods_name}}"
       thumb="{{item.goods_img }}"
+      thumb-link="/pages/details/details?id={{item.id}}&img={{item.goods_img}}&shop_price={{item.shop_price}}&store_count={{item.store_count}}"
+      link-type="reLaunch"
     />
     </view>
     <view wx:else >

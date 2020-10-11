@@ -1,0 +1,19 @@
+<!--pages/details/details.wxml-->
+
+<!--商品幻灯片-->
+      <image src="{{goods_img}}" mode="aspectFill"/>
+<!--商品幻灯片 end-->
+<view class="info-price clear">
+  <view class='price'>￥{{ shop_price }} </view>
+</view>
+<view style="border-top:1px solid #F6F6F6;background: #fff; padding:5px 15px;">
+    <view class="clearfix flex grey gridXt">
+      <text class="sub">运费：包邮</text>
+      <text class="sub">库存：{{store_count}}</text>
+    </view>
+</view>
+<van-goods-action>
+  <van-goods-action-icon icon="cart-o" text="购物车" info="" />
+  <van-goods-action-button color="#be99ff" text="加入购物车" type="warning" />
+  <van-goods-action-button color="#7232dd" text="立即购买" />
+</van-goods-action>

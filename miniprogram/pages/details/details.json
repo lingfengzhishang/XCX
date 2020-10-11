@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "van-goods-action": "@vant/weapp/goods-action/index",
+    "van-goods-action-icon": "@vant/weapp/goods-action-icon/index",
+    "van-goods-action-button": "@vant/weapp/goods-action-button/index"
+  },
+  "backgroundColor": "#F6F6F6",
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#F6F6F6",
+  "navigationBarTitleText": "商品详情",
+  "navigationBarTextStyle": "black"
+}

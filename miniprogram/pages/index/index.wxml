@@ -12,7 +12,12 @@
 <van-notice-bar mode="closeable" text="商城维护阶段，仅供内部人员预览。" />
 <van-divider contentPosition="center">热卖</van-divider>
 <van-grid column-num="3" border="{{ false }}">
-  <van-grid-item use-slot wx:for="{{ goodHot }}">
+  <van-grid-item 
+  use-slot 
+  wx:for="{{ goodHot }}"
+  link-type="reLaunch"
+  url="/pages/details/details?id={{item.id}}&img={{item.goods_img}}&shop_price={{item.shop_price}}&store_count={{item.store_count}}"
+  >
     <image
       style="width: 100%; height: 90px;"
       src="{{item.goods_img}}"
@@ -22,28 +27,45 @@
 </van-grid>
 <van-divider contentPosition="center">推荐</van-divider>
 <van-grid column-num="3" border="{{ false }}">
-  <van-grid-item use-slot wx:for="{{ goodRecommend }}">
+  <van-grid-item 
+  use-slot 
+  wx:for="{{ goodHot }}"
+  link-type="reLaunch"
+  url="/pages/details/details?id={{item.id}}&img={{item.goods_img}}&shop_price={{item.shop_price}}&store_count={{item.store_count}}"
+  >
     <image
       style="width: 100%; height: 90px;"
       src="{{item.goods_img}}"
+      link-type="reLaunch"
+      url="/pages/details/details?id={{item.id}}&img={{item.goods_img}}&shop_price={{item.shop_price}}&store_count={{item.store_count}}"
     />
     <text>{{item.goods_name}}</text>
   </van-grid-item>
 </van-grid>
 <van-divider contentPosition="center">新品</van-divider>
 <van-grid column-num="3" border="{{ false }}">
-  <van-grid-item use-slot wx:for="{{ goodNew }}">
+  <van-grid-item 
+  use-slot 
+  wx:for="{{ goodHot }}"
+  link-type="reLaunch"
+  url="/pages/details/details?id={{item.id}}&img={{item.goods_img}}&shop_price={{item.shop_price}}&store_count={{item.store_count}}"
+  >
     <image
       style="width: 100%; height: 90px;"
       src="{{item.goods_img}}"
+      link-type="reLaunch"
+      url="/pages/details/details?id={{item.id}}&img={{item.goods_img}}&shop_price={{item.shop_price}}&store_count={{item.store_count}}"
     />
     <text>{{item.goods_name}}</text>
   </van-grid-item>
 </van-grid>
 <van-divider contentPosition="center">全部商品</van-divider>
 <van-grid column-num="4">
-  <van-grid-item  wx:for="{{ goods }}" 
+  <van-grid-item  
+  wx:for="{{ goods }}" 
   icon="{{item.goods_img}}"
   text="{{item.goods_name}}"
+  link-type="reLaunch"
+  url="/pages/details/details?id={{item.id}}&img={{item.goods_img}}&shop_price={{item.shop_price}}&store_count={{item.store_count}}"
    />
 </van-grid>
