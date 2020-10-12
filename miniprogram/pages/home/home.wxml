@@ -2,15 +2,11 @@
 <view class='user'>
    <view class='header bg-color acea-row row-between-wrapper'>
       <view class='picTxt acea-row row-between-wrapper'>
-         <view class='pictrue' data-url='/pages/user_info/index' bindtap='goPages'><image src='{{userInfo.avatar}}'></image></view>
+         <view class='pictrue' data-url='/pages/user_info/index' bindtap='goPages'><image src='{{userInfo.avatarUrl}}'></image></view>
          <view class='text'>
             <view class='acea-row row-middle'>
-               <view class='name line1' data-url='/pages/user_info/index' bindtap='goPages'>{{userInfo.uid ? userInfo.nickname : '请点击授权'}}</view>
-               <view data-url='/pages/user_vip/index' class='member acea-row row-middle' wx:if="{{userInfo.vip}}" bindtap='goPages'>
-               <image src='{{userInfo.vip_icon}}'></image>{{userInfo.vip_name}}</view>
+               <view class='name line1' data-url='/pages/user_info/index' bindtap='goPages'>{{userInfo.nickName ? userInfo.nickName : '请点击授权'}}</view>
             </view>
-            <view class='id' data-url='/pages/user_info/index' bindtap='goPages' wx:if='{{userInfo.phone}}'>ID：{{userInfo.uid || 0}}<text class='iconfont icon-bianji1'></text></view>
-            <view wx:else data-url='/pages/user_phone/index' bindtap='goPages'><text class="binding">绑定手机号</text></view>
          </view>
       </view>
       <text class='iconfont icon-shezhi' bindtap='Setting'></text>

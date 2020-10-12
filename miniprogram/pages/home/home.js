@@ -21,7 +21,7 @@ Page({
     getUserInfo()
     this.setData({ iShidden: false })
   },
-
+  
   //点击授权按钮  
   bindGetUserInfo:function(event){
       var that = this
@@ -31,29 +31,38 @@ Page({
           if(res.authSetting['scope.userInfo']){
             //授权了
             // 必须是在用户已经授权的情况下调用
-            wx.getUserInfo({
-              success: function(res) {
-                that.setData({
-                  userInfo : res.userInfo,
-                  iShidden: false
-                })
-                wx.login({
-                  success (loginres) {
-                    if (loginres.code) {
-                      //发起网络请求
-                      wx.request({
-                        url: 'https://www.lingfengzhishang.cn/tp_lsj/public/index.php/api/login/getOpenId/code/'+loginres.code+'/name/'+that.data.userInfo.nickName+'/img/'+that.data.userInfo.avatarUrl,
-                        success: function(successres){
-                            console.log(successres)
-                        }
-                      })
-                    } else {
-                      console.log('登录失败！' + res.errMsg)
-                    }
+            wx.login({
+              success (res1) {
+                if (res1.code) {
+                wx.getUserInfo({
+                  success: function(res) {
+                    that.setData({
+                      userInfo : res.userInfo,
+                      iShidden: false
+                    })
+                    wx.request({
+                      url: 'https://www.lingfengzhishang.cn/tp_lsj/public/index.php/api/login/getOpenId/code/'+res1.code,
+                      success: function(successres){
+                        wx.request({
+                          url: 'https://www.lingfengzhishang.cn/tp_lsj/public/index.php/api/login/getApenidData',
+                          data:{
+                            encryptedData:res.encryptedData,
+                            iv:res.iv,
+                            session_key:successres.data.data.session_key
+                          },
+                          success:function(res){
+                            that.setData({
+                              userInfo:res.data
+                            })
+                          }
+                        })
+                      }
+                    })
                   }
                 })
               }
-            })
+            }
+          })
           }else{
             wx.authorize({
               scope: 'scope.userInfo',
@@ -67,31 +76,34 @@ Page({
      
   },
 
-  // getUserInfos:function(){
-  //   //登录提示
-  //   wx.showLoading({
-  //     title: '登陆中...',
-  //   })
-  //   var that = this
-  //   wx.login({
-  //     success (res) {
-  //       if (res.code) {
-  //         //发起网络请求
-  //         wx.request({
-  //           url: 'https://www.lingfengzhishang.cn/tp_lsj/public/index.php/api/login/getuserinfo/code/'+res.code,
-  //           success: function(res){
-  //               that.setData({
-  //                 userInfo:res.data.data
-  //               })
-  //               wx.hideLoading( )
-  //           }
-  //         })
-  //       } else {
-  //         console.log('登录失败！' + res.errMsg)
-  //       }
-  //     }
-  //   })
-  // },
+  getUserInfos:function(){
+    //登录提示
+    wx.showLoading({
+      title: '登陆中...',
+    })
+    var that = this
+    wx.login({
+      success (res) {
+        if (res.code) {
+          //发起网络请求
+          wx.request({
+            url: 'https://www.lingfengzhishang.cn/tp_lsj/public/index.php/api/login/getuserinfo/code/'+res.code,
+            success: function(res){
+              if(res.data.status  == 200){
+                console.log(res)
+                that.setData({
+                  userInfo:{nickName:res.data.data.name,avatarUrl:res.data.data.img}
+                })
+              }
+              wx.hideLoading( )
+            }
+          })
+        } else {
+          console.log('登录失败！' + res.errMsg)
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
