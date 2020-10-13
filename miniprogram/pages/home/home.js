@@ -90,7 +90,6 @@ Page({
             url: 'https://www.lingfengzhishang.cn/tp_lsj/public/index.php/api/login/getuserinfo/code/'+res.code,
             success: function(res){
               if(res.data.status  == 200){
-                console.log(res)
                 that.setData({
                   userInfo:{nickName:res.data.data.name,avatarUrl:res.data.data.img}
                 })
